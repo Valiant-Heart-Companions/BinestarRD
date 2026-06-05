@@ -3,6 +3,7 @@ import { MapPin, Shield, Star, ArrowRight, Search, DollarSign, MessageCircle } f
 import { getFeaturedProviders, roleLabel } from '@/lib/providers';
 import { getPublishedQuestions } from '@/lib/questions';
 import HeroSearch from './hero-search';
+import ProviderAvatar from '@/components/provider-avatar';
 import styles from './home.module.css';
 
 export default async function Home() {
@@ -94,11 +95,13 @@ export default async function Home() {
                             {featuredDoctors.map(doc => (
                                 <Link href={`/perfil/${doc.slug}`} key={doc.id} className={`${styles.providerCard} block text-inherit no-underline`}>
                                     <div className={styles.imageWrapper}>
-                                        {doc.image ? (
-                                            <img src={doc.image} alt={doc.name} className={styles.providerImage} />
-                                        ) : (
-                                            <div className="flex items-center justify-center h-full text-gray-300">Sin foto</div>
-                                        )}
+                                        <ProviderAvatar
+                                            src={doc.image}
+                                            name={doc.name}
+                                            fill
+                                            sizes="(max-width: 768px) 50vw, 300px"
+                                            className={styles.providerImage}
+                                        />
                                         {doc.isFoundingMember && (
                                             <div className={styles.badge}>
                                                 Fundador

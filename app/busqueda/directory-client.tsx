@@ -4,6 +4,7 @@ import { useState, useMemo } from 'react';
 import type { UiProvider } from '@/lib/provider-types';
 import { roleLabel } from '@/lib/provider-types';
 import MapWrapper from '@/components/map-wrapper';
+import ProviderAvatar from '@/components/provider-avatar';
 import Link from 'next/link';
 import { MapPin, Star, DollarSign, CheckCircle } from 'lucide-react';
 import styles from './directory.module.css';
@@ -120,13 +121,13 @@ export default function DirectoryClient({
                                         </div>
                                     )}
                                     <div className={styles.cardContent}>
-                                        {provider.image ? (
-                                            <img src={provider.image} alt={provider.name} className={styles.avatar} />
-                                        ) : (
-                                            <div className={`${styles.avatar} flex items-center justify-center text-gray-400 text-lg font-bold`}>
-                                                {provider.name.charAt(0)}
-                                            </div>
-                                        )}
+                                        <ProviderAvatar
+                                            src={provider.image}
+                                            name={provider.name}
+                                            width={64}
+                                            height={64}
+                                            className={styles.avatar}
+                                        />
 
                                         <div className={styles.info}>
                                             <p className={styles.role}>{roleLabel(provider.role)}</p>

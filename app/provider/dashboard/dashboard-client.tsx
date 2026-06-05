@@ -12,10 +12,19 @@ import {
     Send,
     CheckCircle2,
     Circle,
+    Camera,
 } from 'lucide-react';
 import type { UiProvider } from '@/lib/provider-types';
 import type { ProviderStats } from '@/lib/providers';
-import { updateMyProfile, answerQuestion, type SaveState, type AnswerState } from './actions';
+import {
+    updateMyProfile,
+    answerQuestion,
+    updateMyPhoto,
+    type SaveState,
+    type AnswerState,
+    type PhotoState,
+} from './actions';
+import ProviderAvatar from '@/components/provider-avatar';
 import styles from '../provider.module.css';
 
 export type InboxQuestion = {
@@ -79,6 +88,44 @@ function InboxItem({ question }: { question: InboxQuestion }) {
                 </div>
             )}
         </div>
+    );
+}
+
+function PhotoForm({ provider }: { provider: UiProvider }) {
+    const [state, formAction, pending] = useActionState<PhotoState, FormData>(
+        updateMyPhoto,
+        {},
+    );
+    return (
+        <form action={formAction} className={styles.sectionCard} style={{ maxWidth: 640, marginBottom: '1.5rem' }}>
+            <div className={styles.cardHeader}>
+                <h2 className={styles.cardTitle}><Camera className="w-5 h-5" /> Foto de perfil</h2>
+            </div>
+            <div className={styles.cardBody}>
+                <div className="flex items-center gap-4">
+                    <div style={{ position: 'relative', width: 80, height: 80, borderRadius: '0.75rem', overflow: 'hidden', flexShrink: 0 }}>
+                        <ProviderAvatar src={provider.image} name={provider.name} fill sizes="80px" />
+                    </div>
+                    <div style={{ flex: 1 }}>
+                        <input
+                            type="file"
+                            name="photo"
+                            accept="image/jpeg,image/png,image/webp"
+                            required
+                            className={styles.input}
+                        />
+                        <p className="text-xs text-gray-500 mt-1">JPG, PNG o WebP. Máximo 5 MB.</p>
+                    </div>
+                </div>
+                {state.error ? <p className="text-sm text-red-600 mt-2">{state.error}</p> : null}
+                {state.saved ? <p className="text-sm text-green-600 mt-2">Foto actualizada.</p> : null}
+                <div className={styles.actionRow}>
+                    <button type="submit" className={styles.btnSave} disabled={pending}>
+                        <Save className="w-4 h-4 inline mr-2" /> {pending ? 'Subiendo…' : 'Subir foto'}
+                    </button>
+                </div>
+            </div>
+        </form>
     );
 }
 
@@ -260,6 +307,8 @@ export default function DashboardClient({
                 )}
 
                 {tab === 'profile' && (
+                    <>
+                    <PhotoForm provider={provider} />
                     <form action={formAction} className={styles.sectionCard} style={{ maxWidth: 640 }}>
                         <div className={styles.cardHeader}>
                             <h2 className={styles.cardTitle}><Edit3 className="w-5 h-5" /> Editar perfil</h2>
@@ -310,6 +359,7 @@ export default function DashboardClient({
                             ) : null}
                         </div>
                     </form>
+                    </>
                 )}
 
                 {tab === 'inbox' && (
