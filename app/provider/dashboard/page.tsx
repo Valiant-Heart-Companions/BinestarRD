@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { getUser } from '@/lib/auth';
-import { getMyProvider } from '@/lib/providers';
+import { getMyProvider, getProviderStats } from '@/lib/providers';
 import { getInboxForProvider } from '@/lib/questions';
 import DashboardClient from './dashboard-client';
 
@@ -45,7 +45,10 @@ export default async function ProviderDashboardPage() {
     );
   }
 
-  const inbox = await getInboxForProvider(provider.id);
+  const [inbox, stats] = await Promise.all([
+    getInboxForProvider(provider.id),
+    getProviderStats(provider.id),
+  ]);
 
-  return <DashboardClient provider={provider} inbox={inbox} />;
+  return <DashboardClient provider={provider} inbox={inbox} stats={stats} />;
 }

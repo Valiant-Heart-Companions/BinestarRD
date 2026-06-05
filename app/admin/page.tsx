@@ -1,6 +1,8 @@
 import { redirect } from 'next/navigation';
 import { getUser, getProfile } from '@/lib/auth';
 import {
+  getAdminStats,
+  getListingsNeedingAttention,
   getPendingClaims,
   getModerationQuestions,
   getModerationAnswers,
@@ -24,15 +26,20 @@ export default async function AdminPage() {
     redirect('/');
   }
 
-  const [claims, questions, answers, reviews] = await Promise.all([
-    getPendingClaims(),
-    getModerationQuestions(),
-    getModerationAnswers(),
-    getModerationReviews(),
-  ]);
+  const [stats, listings, claims, questions, answers, reviews] =
+    await Promise.all([
+      getAdminStats(),
+      getListingsNeedingAttention(),
+      getPendingClaims(),
+      getModerationQuestions(),
+      getModerationAnswers(),
+      getModerationReviews(),
+    ]);
 
   return (
     <AdminClient
+      stats={stats}
+      listings={listings}
       claims={claims}
       questions={questions}
       answers={answers}

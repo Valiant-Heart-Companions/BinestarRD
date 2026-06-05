@@ -128,6 +128,35 @@ export async function getMyProvider(): Promise<UiProvider | null> {
   return mapRow(row, ratings.get(row.id));
 }
 
+export interface ProviderStats {
+  answersPublished: number;
+  answersPending: number;
+}
+
+// Real answer counts for the owner's dashboard. Ratings/reviews already ride
+// along on the UiProvider, so this only needs the answer breakdown.
+export async function getProviderStats(
+  providerId: string,
+): Promise<ProviderStats> {
+  const supabase = await createClient();
+  const [published, pending] = await Promise.all([
+    supabase
+      .from('answers')
+      .select('id', { count: 'exact', head: true })
+      .eq('provider_id', providerId)
+      .eq('status', 'published'),
+    supabase
+      .from('answers')
+      .select('id', { count: 'exact', head: true })
+      .eq('provider_id', providerId)
+      .eq('status', 'pending'),
+  ]);
+  return {
+    answersPublished: published.count ?? 0,
+    answersPending: pending.count ?? 0,
+  };
+}
+
 export async function getProviderBySlug(
   slug: string,
 ): Promise<UiProvider | null> {

@@ -91,6 +91,46 @@
     color: #111827;
 }
 
+.cardCaption {
+    font-size: 0.75rem;
+    color: #9CA3AF;
+    margin-top: 0.5rem;
+}
+
+.sectionLabel {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #6B7280;
+    margin-bottom: 0.75rem;
+}
+
+.attention {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background-color: #FEF3C7;
+    color: #92400E;
+    border: 1px solid #FDE68A;
+    border-radius: 0.75rem;
+    padding: 0.875rem 1.25rem;
+    margin-bottom: 2rem;
+    font-size: 0.875rem;
+}
+
+.attentionLink {
+    margin-left: 0.5rem;
+    font-weight: 700;
+    text-decoration: underline;
+    cursor: pointer;
+    color: #92400E;
+}
+
+.attentionLink:hover {
+    color: #78350F;
+}
+
 /* Tables */
 .tableContainer {
     background: white;
@@ -156,6 +196,11 @@
     color: #B91C1C;
 }
 
+.statusHidden {
+    background-color: #E5E7EB;
+    color: #4B5563;
+}
+
 .actions {
     display: flex;
     gap: 0.5rem;
@@ -170,5 +215,29 @@
 .btnReject {
     color: #DC2626;
     font-weight: 600;
+    cursor: pointer;
+}
+
+.btnTextApprove {
+    display: inline-flex;
+    align-items: center;
+    color: #059669;
+    background-color: #ECFDF5;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    padding: 0.375rem 0.75rem;
+    border-radius: 0.375rem;
+    cursor: pointer;
+}
+
+.btnTextReject {
+    display: inline-flex;
+    align-items: center;
+    color: #B91C1C;
+    background-color: #FEF2F2;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    padding: 0.375rem 0.75rem;
+    border-radius: 0.375rem;
     cursor: pointer;
 }

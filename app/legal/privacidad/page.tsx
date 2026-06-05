@@ -6,7 +6,7 @@ export const metadata = {
         'Cómo Bienestar RD maneja la información: origen de los perfiles, datos que recopilamos, reseñas, y cómo solicitar la eliminación o corrección de un perfil.',
 };
 
-const CONTACT_EMAIL = 'privacidad@bienestarrd.com';
+const CONTACT_EMAIL = 'privacidad@mercadeoracional.com';
 
 export default function PrivacyPage() {
     return (
