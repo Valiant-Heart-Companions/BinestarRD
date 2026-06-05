@@ -1,0 +1,96 @@
+[
+  {
+    "full_name": "Dr. Carín Mustafá Bretón",
+    "role": "psychiatrist",
+    "specialties": [],
+    "location_text": "Santiago de los Caballeros, Santiago",
+    "neighborhood": null,
+    "phone": "809-580-1171",
+    "source": "https://guiamedica.com.do/medicos/dr-carin-mustafa-psiquiatra-santiago/"
+  },
+  {
+    "full_name": "Dr. Francisco Angeles Gómez",
+    "role": "psychiatrist",
+    "specialties": [],
+    "location_text": "Santiago de los Caballeros, Santiago",
+    "neighborhood": null,
+    "phone": "809-226-8686",
+    "source": "https://guiamedica.com.do/medicos/dr-francisco-angeles-gomez-psiquiatra-santiago/"
+  },
+  {
+    "full_name": "Dr. Mirlan de los Santos",
+    "role": "psychiatrist",
+    "specialties": [],
+    "location_text": "Santiago de los Caballeros, Santiago",
+    "neighborhood": null,
+    "phone": "829-947-2321",
+    "source": "https://guiamedica.com.do/medicos/dr-mirlan-de-los-santos-psiquiatra-salud-mental-santiago/"
+  },
+  {
+    "full_name": "Dra. Clara Mercedes López y Rosario",
+    "role": "psychiatrist",
+    "specialties": [
+      "Salud mental de la mujer",
+      "Terapia sexual y de pareja"
+    ],
+    "location_text": "Santo Domingo, Distrito Nacional",
+    "neighborhood": null,
+    "phone": "809-692-6481",
+    "source": "https://www.neurohealthrd.com/dra-clara-lopez-psiquiatra"
+  },
+  {
+    "full_name": "Dra. Frances Roulet",
+    "role": "psychologist",
+    "specialties": [],
+    "location_text": "Santiago de los Caballeros, Santiago",
+    "neighborhood": null,
+    "phone": "809-226-8686",
+    "source": "https://guiamedica.com.do/medicos/dra-frances-roulet-psicologa-clinica-santiago/"
+  },
+  {
+    "full_name": "Dra. Rose Emily Nina, Ph.D",
+    "role": "psychiatrist",
+    "specialties": [
+      "Psiquiatría",
+      "Psicogeriatría",
+      "Neuropsicología clínica"
+    ],
+    "location_text": "Gazcue, Santo Domingo, Distrito Nacional",
+    "neighborhood": "Gazcue",
+    "phone": "809-686-0651",
+    "source": "https://www.institutonina.com/"
+  },
+  {
+    "full_name": "Lic. Gloria Concepción García",
+    "role": "psychologist",
+    "specialties": [
+      "Terapia Familiar"
+    ],
+    "location_text": "La Vega",
+    "neighborhood": null,
+    "phone": "809-573-2533",
+    "source": "https://guiamedica.com.do/medicos/lic-gloria-concepcion-garcia-psicologo-terapia-fliar-la-vega/"
+  },
+  {
+    "full_name": "Manuel R. Viera Folch",
+    "role": "psychologist",
+    "specialties": [],
+    "location_text": "Santiago de los Caballeros, Santiago",
+    "neighborhood": null,
+    "phone": "809-226-8686",
+    "source": "https://guiamedica.com.do/medicos/dr-manuel-viera-folch-psicologo-clinico-santiago/"
+  },
+  {
+    "full_name": "Susan Portes",
+    "role": "psychologist",
+    "specialties": [
+      "Ansiedad",
+      "Adicciones",
+      "Depresión"
+    ],
+    "location_text": "Los Cacicazgos, Santo Domingo, Distrito Nacional",
+    "neighborhood": "Los Cacicazgos",
+    "phone": "809-737-3213",
+    "source": "https://psiquiatria.com/directorio/susan-portes"
+  }
+]
