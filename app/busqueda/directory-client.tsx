@@ -75,6 +75,7 @@ export default function DirectoryClient({
                                 value={location}
                                 onChange={(e) => setLocation(e.target.value)}
                                 className={styles.select}
+                                aria-label="Filtrar por ubicación"
                             >
                                 <option value="">Todas las ubicaciones</option>
                                 {locationOptions.map(loc => (
@@ -87,6 +88,7 @@ export default function DirectoryClient({
                                     value={insurance}
                                     onChange={(e) => setInsurance(e.target.value)}
                                     className={styles.select}
+                                    aria-label="Filtrar por seguro"
                                 >
                                     <option value="">Todos los Seguros</option>
                                     {insuranceOptions.map(ins => (
@@ -99,6 +101,7 @@ export default function DirectoryClient({
                                 value={price}
                                 onChange={(e) => setPrice(e.target.value)}
                                 className={styles.select}
+                                aria-label="Filtrar por precio"
                             >
                                 <option value="all">Cualquier Precio</option>
                                 <option value="low">Económico (hasta RD$2,000)</option>

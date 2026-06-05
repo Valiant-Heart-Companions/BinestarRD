@@ -13,9 +13,10 @@ export async function upvoteQuestionAction(formData: FormData): Promise<void> {
   const voterKey = await ensureVoterKey();
   const supabase = await createClient();
   // PK (question_id, voter_key) makes repeat votes a no-op.
-  await supabase
+  const { error } = await supabase
     .from('question_votes')
     .upsert({ question_id: id, voter_key: voterKey }, { onConflict: 'question_id,voter_key', ignoreDuplicates: true });
+  if (error) throw error;
   revalidatePath('/preguntas');
   if (typeof slug === 'string' && slug) revalidatePath(`/preguntas/${slug}`);
 }
@@ -25,8 +26,9 @@ export async function upvoteAnswerAction(formData: FormData): Promise<void> {
   const slug = formData.get('slug');
   const voterKey = await ensureVoterKey();
   const supabase = await createClient();
-  await supabase
+  const { error } = await supabase
     .from('answer_votes')
     .upsert({ answer_id: id, voter_key: voterKey }, { onConflict: 'answer_id,voter_key', ignoreDuplicates: true });
+  if (error) throw error;
   if (typeof slug === 'string' && slug) revalidatePath(`/preguntas/${slug}`);
 }
