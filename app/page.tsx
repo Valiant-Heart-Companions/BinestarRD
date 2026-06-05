@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { MapPin, Shield, Star, ArrowRight, Search, DollarSign, MessageCircle } from 'lucide-react';
 import { getFeaturedProviders, roleLabel } from '@/lib/providers';
@@ -5,6 +6,12 @@ import { getPublishedQuestions } from '@/lib/questions';
 import HeroSearch from './hero-search';
 import ProviderAvatar from '@/components/provider-avatar';
 import styles from './home.module.css';
+
+export const metadata: Metadata = {
+    title: 'Encuentra tu psicólogo o psiquiatra en República Dominicana',
+    description:
+        'Directorio verificado de psicólogos y psiquiatras en la República Dominicana. Precios transparentes, perfiles reales, agenda directo por WhatsApp. Sin intermediarios.',
+};
 
 export default async function Home() {
     const [featuredDoctors, allQuestions] = await Promise.all([

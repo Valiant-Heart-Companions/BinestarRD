@@ -33,11 +33,13 @@ export const metadata: Metadata = {
         title: `${SITE_NAME} | Encuentra tu paz mental`,
         description: SITE_DESCRIPTION,
         url: SITE_URL,
+        images: [{ url: '/og-image.png', width: 1200, height: 630, alt: `${SITE_NAME} — Directorio de salud mental en RD` }],
     },
     twitter: {
         card: 'summary_large_image',
         title: `${SITE_NAME} | Encuentra tu paz mental`,
         description: SITE_DESCRIPTION,
+        images: ['/og-image.png'],
     },
 }
 
