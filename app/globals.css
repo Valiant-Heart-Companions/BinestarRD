@@ -1,42 +1,108 @@
+@import "tailwindcss";
+
+/* Vanilla CSS Reset & Variables */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+    /* Premium Palette - Sanctuary Theme */
+    --foreground-rgb: 28, 58, 51; /* --color-primary */
+    --background-start-rgb: 252, 250, 247; /* Soft Cream #FCFAF7 */
+    --background-end-rgb: 250, 248, 244;
+
+    /* Brand Colors */
+    --color-primary: #1C3A33; /* Deep Jungle Green */
+    --color-primary-light: #2D5B50;
+    --color-secondary: #F5F0E6; /* Soft Beige/Sand */
+    --color-accent: #D4AF37; /* Metallic Gold */
+    --color-accent-soft: #F9F1D8;
+
+    --color-text-main: #2C3E3A; /* Slightly greener dark text */
+    --color-text-muted: #64748B;
+
+    --font-heading: var(--font-cormorant), serif;
+    --font-body: var(--font-outfit), sans-serif;
+    --radius: 0.75rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html,
 body {
-  max-width: 100vw;
-  overflow-x: hidden;
+    color: var(--color-text-main);
+    background-color: var(--background-start-rgb);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--color-primary);
+    line-height: 1.2;
 }
 
+/* Custom Utility Classes (Since we aren't using Tailwind fully yet based on Vanilla CSS preference, but I left directives just in case user switches back. 
+   Actually, I used --no-tailwind, so I should remove the @tailwind directives) */
+
+/* Corrections for No-Tailwind */
+/* Reset */
 * {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+/* Helpers */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+.btn-primary {
+    background-color: var(--color-primary);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius);
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.2s;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-primary:hover {
+    background-color: var(--color-primary-light);
+}
+
+.btn-secondary {
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius);
+    text-decoration: none;
+    font-weight: 600;
+    transition: filter 0.2s;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-secondary:hover {
+    filter: brightness(0.95);
+}
+
+.card {
+    background: white;
+    border: 1px solid #E5E7EB;
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.text-gold {
+    color: var(--color-accent);
+}
+
+.bg-gold-soft {
+    background-color: var(--color-accent-soft);
 }

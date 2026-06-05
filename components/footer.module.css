@@ -1,0 +1,91 @@
+.footer {
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+    padding: 3rem 0 2rem;
+    margin-top: 4rem;
+}
+
+.inner {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 2.5rem;
+}
+
+@media (max-width: 720px) {
+    .inner {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
+.brand {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.02em;
+}
+
+.tagline {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: rgba(245, 240, 230, 0.8);
+    max-width: 32ch;
+}
+
+.colTitle {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.link {
+    color: rgba(245, 240, 230, 0.85);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.15s ease;
+}
+
+.link:hover {
+    color: #fff;
+}
+
+.crisis {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-decoration: none;
+}
+
+.crisisNote {
+    font-size: 0.8rem;
+    color: rgba(245, 240, 230, 0.7);
+    margin-top: 0.5rem;
+    line-height: 1.5;
+}
+
+.bottom {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(245, 240, 230, 0.15);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    font-size: 0.8rem;
+    color: rgba(245, 240, 230, 0.6);
+}
