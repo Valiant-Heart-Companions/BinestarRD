@@ -74,7 +74,16 @@ async function specialtyIdMap(names) {
 // Returns the public URL (cache-busted) or null on any failure.
 async function ingestImage(slug, url) {
   try {
-    const res = await fetch(url);
+    // Browser-like headers: some CDNs (e.g. Wix) use referer-based hotlink
+    // protection and reject bare requests for otherwise-public image assets.
+    const res = await fetch(url, {
+      headers: {
+        'User-Agent':
+          'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36',
+        Accept: 'image/avif,image/webp,image/png,image/*,*/*;q=0.8',
+        Referer: new URL(url).origin + '/',
+      },
+    });
     if (!res.ok) {
       console.warn(`  image fetch failed for ${slug}: HTTP ${res.status}`);
       return null;
