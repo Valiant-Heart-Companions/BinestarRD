@@ -5,12 +5,44 @@ import { getFeaturedProviders, roleLabel } from '@/lib/providers';
 import { getPublishedQuestions } from '@/lib/questions';
 import HeroSearch from './hero-search';
 import ProviderAvatar from '@/components/provider-avatar';
+import { SITE_URL, SITE_NAME, SITE_DESCRIPTION } from '@/lib/site';
 import styles from './home.module.css';
 
 export const metadata: Metadata = {
     title: 'Encuentra tu psicólogo o psiquiatra en República Dominicana',
     description:
         'Directorio verificado de psicólogos y psiquiatras en la República Dominicana. Precios transparentes, perfiles reales, agenda directo por WhatsApp. Sin intermediarios.',
+};
+
+const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+        {
+            '@type': 'Organization',
+            '@id': `${SITE_URL}/#organization`,
+            name: SITE_NAME,
+            url: SITE_URL,
+            description: SITE_DESCRIPTION,
+            logo: `${SITE_URL}/icon.svg`,
+            areaServed: 'República Dominicana',
+        },
+        {
+            '@type': 'WebSite',
+            '@id': `${SITE_URL}/#website`,
+            name: SITE_NAME,
+            url: SITE_URL,
+            inLanguage: 'es-DO',
+            publisher: { '@id': `${SITE_URL}/#organization` },
+            potentialAction: {
+                '@type': 'SearchAction',
+                target: {
+                    '@type': 'EntryPoint',
+                    urlTemplate: `${SITE_URL}/busqueda?ubicacion={search_term_string}`,
+                },
+                'query-input': 'required name=search_term_string',
+            },
+        },
+    ],
 };
 
 export default async function Home() {
@@ -22,6 +54,10 @@ export default async function Home() {
 
     return (
         <main className="pb-20">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
             {/* Hero Section */}
             <section className={styles.hero}>
                 <div className={styles.pattern}></div>
