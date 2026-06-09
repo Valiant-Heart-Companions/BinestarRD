@@ -158,16 +158,16 @@ export default function AdminClient({
                                         <td className="text-xs text-gray-500 whitespace-nowrap">{timeAgo(c.createdAt)}</td>
                                         <td>
                                             <div className={styles.actions}>
-                                                <a href={`/perfil/${c.providerSlug}`} target="_blank" rel="noopener noreferrer" className={styles.btnApprove} title="Ver perfil" style={{ background: '#e5e7eb', color: '#374151' }}>
+                                                <a href={`/perfil/${c.providerSlug}`} target="_blank" rel="noopener noreferrer" className={styles.btnApprove} title="Ver perfil" aria-label="Ver perfil" style={{ background: '#e5e7eb', color: '#374151' }}>
                                                     <Eye className="w-4 h-4" />
                                                 </a>
                                                 <form action={approveClaimAction}>
                                                     <input type="hidden" name="id" value={c.id} />
-                                                    <button className={styles.btnApprove} title="Aprobar reclamo"><Check className="w-4 h-4" /></button>
+                                                    <button className={styles.btnApprove} title="Aprobar reclamo" aria-label="Aprobar reclamo"><Check className="w-4 h-4" /></button>
                                                 </form>
                                                 <form action={rejectClaimAction}>
                                                     <input type="hidden" name="id" value={c.id} />
-                                                    <button className={styles.btnReject} title="Rechazar"><X className="w-4 h-4" /></button>
+                                                    <button className={styles.btnReject} title="Rechazar" aria-label="Rechazar reclamo"><X className="w-4 h-4" /></button>
                                                 </form>
                                             </div>
                                         </td>
@@ -370,7 +370,7 @@ function DirectoryTab({ listings }: { listings: DirectoryListing[] }) {
                             <td className="text-xs text-gray-500 whitespace-nowrap">{timeAgo(l.updatedAt)}</td>
                             <td>
                                 <div className={styles.actions}>
-                                    <a href={`/perfil/${l.slug}`} target="_blank" rel="noopener noreferrer" className={styles.btnApprove} title="Ver perfil" style={{ background: '#e5e7eb', color: '#374151' }}>
+                                    <a href={`/perfil/${l.slug}`} target="_blank" rel="noopener noreferrer" className={styles.btnApprove} title="Ver perfil" aria-label="Ver perfil" style={{ background: '#e5e7eb', color: '#374151' }}>
                                         <Eye className="w-4 h-4" />
                                     </a>
                                     {l.listingStatus === 'removal_requested' ? (
@@ -446,12 +446,12 @@ function ModerationTable({
                                     <form action={action}>
                                         <input type="hidden" name="id" value={row.id} />
                                         <input type="hidden" name="status" value="published" />
-                                        <button className={styles.btnApprove} title="Publicar"><Check className="w-4 h-4" /></button>
+                                        <button className={styles.btnApprove} title="Publicar" aria-label="Publicar"><Check className="w-4 h-4" /></button>
                                     </form>
                                     <form action={action}>
                                         <input type="hidden" name="id" value={row.id} />
                                         <input type="hidden" name="status" value="removed" />
-                                        <button className={styles.btnReject} title="Eliminar"><X className="w-4 h-4" /></button>
+                                        <button className={styles.btnReject} title="Eliminar" aria-label="Eliminar"><X className="w-4 h-4" /></button>
                                     </form>
                                 </div>
                             </td>

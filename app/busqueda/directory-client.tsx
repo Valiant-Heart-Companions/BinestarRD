@@ -4,6 +4,7 @@ import { useState, useMemo } from 'react';
 import type { UiProvider } from '@/lib/provider-types';
 import { roleLabel } from '@/lib/provider-types';
 import MapWrapper from '@/components/map-wrapper';
+import ProviderAvatar from '@/components/provider-avatar';
 import Link from 'next/link';
 import { MapPin, Star, DollarSign, CheckCircle } from 'lucide-react';
 import styles from './directory.module.css';
@@ -75,6 +76,7 @@ export default function DirectoryClient({
                                 value={location}
                                 onChange={(e) => setLocation(e.target.value)}
                                 className={styles.select}
+                                aria-label="Filtrar por ubicación"
                             >
                                 <option value="">Todas las ubicaciones</option>
                                 {locationOptions.map(loc => (
@@ -87,6 +89,7 @@ export default function DirectoryClient({
                                     value={insurance}
                                     onChange={(e) => setInsurance(e.target.value)}
                                     className={styles.select}
+                                    aria-label="Filtrar por seguro"
                                 >
                                     <option value="">Todos los Seguros</option>
                                     {insuranceOptions.map(ins => (
@@ -99,6 +102,7 @@ export default function DirectoryClient({
                                 value={price}
                                 onChange={(e) => setPrice(e.target.value)}
                                 className={styles.select}
+                                aria-label="Filtrar por precio"
                             >
                                 <option value="all">Cualquier Precio</option>
                                 <option value="low">Económico (hasta RD$2,000)</option>
@@ -117,13 +121,13 @@ export default function DirectoryClient({
                                         </div>
                                     )}
                                     <div className={styles.cardContent}>
-                                        {provider.image ? (
-                                            <img src={provider.image} alt={provider.name} className={styles.avatar} />
-                                        ) : (
-                                            <div className={`${styles.avatar} flex items-center justify-center text-gray-400 text-lg font-bold`}>
-                                                {provider.name.charAt(0)}
-                                            </div>
-                                        )}
+                                        <ProviderAvatar
+                                            src={provider.image}
+                                            name={provider.name}
+                                            width={64}
+                                            height={64}
+                                            className={styles.avatar}
+                                        />
 
                                         <div className={styles.info}>
                                             <p className={styles.role}>{roleLabel(provider.role)}</p>

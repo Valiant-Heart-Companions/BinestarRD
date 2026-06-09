@@ -61,6 +61,71 @@ export async function updateMyProfile(
   return { saved: true };
 }
 
+const MAX_PHOTO_BYTES = 5 * 1024 * 1024;
+const ALLOWED_PHOTO_TYPES = ['image/jpeg', 'image/png', 'image/webp'];
+
+export type PhotoState = { error?: string; saved?: boolean };
+
+export async function updateMyPhoto(
+  _prev: PhotoState,
+  formData: FormData,
+): Promise<PhotoState> {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (!user) {
+    return { error: 'Tu sesión expiró. Vuelve a iniciar sesión.' };
+  }
+
+  const file = formData.get('photo');
+  if (!(file instanceof File) || file.size === 0) {
+    return { error: 'Selecciona una imagen.' };
+  }
+  if (!ALLOWED_PHOTO_TYPES.includes(file.type)) {
+    return { error: 'Formato no válido. Usa JPG, PNG o WebP.' };
+  }
+  if (file.size > MAX_PHOTO_BYTES) {
+    return { error: 'La imagen es muy grande (máximo 5 MB).' };
+  }
+
+  const { data: provider } = await supabase
+    .from('providers')
+    .select('id, slug')
+    .eq('owner_id', user.id)
+    .maybeSingle();
+  if (!provider) {
+    return { error: 'No encontramos un perfil asociado a tu cuenta.' };
+  }
+
+  // Folder keyed by auth.uid() so storage RLS can scope writes to the owner.
+  const path = `${user.id}/avatar`;
+  const { error: uploadError } = await supabase.storage
+    .from('provider-avatars')
+    .upload(path, file, { upsert: true, contentType: file.type });
+  if (uploadError) {
+    return { error: 'No pudimos subir la imagen. Intenta de nuevo.' };
+  }
+
+  const {
+    data: { publicUrl },
+  } = supabase.storage.from('provider-avatars').getPublicUrl(path);
+  // Cache-bust so the new photo shows immediately on a stable path.
+  const imageUrl = `${publicUrl}?v=${Date.now()}`;
+
+  const { error } = await supabase
+    .from('providers')
+    .update({ image_url: imageUrl, updated_at: new Date().toISOString() })
+    .eq('id', provider.id);
+  if (error) {
+    return { error: 'No pudimos guardar la imagen. Intenta de nuevo.' };
+  }
+
+  revalidatePath('/provider/dashboard');
+  revalidatePath(`/perfil/${provider.slug}`);
+  return { saved: true };
+}
+
 const answerSchema = z.object({
   questionId: z.string().uuid(),
   body: z.string().trim().min(10, 'La respuesta es muy corta.').max(4000),

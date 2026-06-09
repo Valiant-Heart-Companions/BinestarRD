@@ -37,10 +37,10 @@ Decided product posture (do not silently reverse these):
 |------|---------|-------|
 | `/` | Home / hero / featured | mock data |
 | `/busqueda` | Directory: filters + Leaflet map | mock data, client component |
-| `/perfil/[id]` | Provider profile + WhatsApp CTA | mock data |
+| `/perfil/[slug]` | Provider profile + WhatsApp CTA | mock data |
 | `/preguntas` | Q&A index | mock data |
 | `/preguntas/[slug]` | Q&A detail + answers | mock data |
-| `/preguntas/nueva` | Ask a question | **MISSING (404)** — linked from home |
+| `/preguntas/nueva` | Ask a question | mock data |
 | `/provider/dashboard` | Provider portal | mock, all actions are `alert()` |
 | `/admin` | Validation + moderation queues | mock, buttons inert |
 | `/legal/privacidad` | Privacy policy | static |
@@ -53,7 +53,7 @@ Components: `header`, `logo`, `crisis-interceptor`, `map` / `map-wrapper`.
 - **Auth/access:** enforce with **RLS** in Postgres, not just UI. Roles: `patient`, `provider`, `admin`. A provider may edit only the row where `owner_id = auth.uid()`. See `docs/data-model.md`.
 - **Replacing mock data:** `lib/mock-data.ts` and `lib/utils.ts#getProviderById` are placeholders. Replace reads with typed Supabase queries; generate DB types into `lib/` and use them.
 - **Spanish UI:** all user-facing copy is Spanish (DR context: ARS Humano/Universal/Senasa/Palic, RD$, Santo Domingo neighborhoods). Keep it that way.
-- **TypeScript:** dynamic route `params` is a `Promise` in Next 16 — `await params`. Some files carry a dead non-Promise `PageProps` interface (e.g. `app/perfil/[id]/page.tsx`); remove these, don't copy them.
+- **TypeScript:** dynamic route `params` is a `Promise` in Next 16 — `await params`. Some files carry a dead non-Promise `PageProps` interface (e.g. `app/perfil/[slug]/page.tsx`); remove these, don't copy them.
 - **Comments:** write almost none; only for non-obvious "why".
 
 ## Safety rules (must never regress)
@@ -78,6 +78,5 @@ Before declaring work done: `npm run typecheck && npm run lint && npm run build`
 
 - **Branding drift:** repo/title mix "BinestarRD" vs "Bienestar RD". Pick one.
 - **Mock ratings** on real-ish people — remove when wiring reviews.
-- **`/preguntas/nueva`** is linked but missing.
 
 See `docs/data-model.md` for the schema and `docs/roadmap.md` for the phased plan.

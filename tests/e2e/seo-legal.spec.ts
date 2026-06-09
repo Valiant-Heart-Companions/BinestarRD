@@ -23,6 +23,19 @@ test.describe('SEO & legal surfaces', () => {
         expect(res.ok()).toBeTruthy();
     });
 
+    test('homepage emits Organization and WebSite structured data', async ({ page }) => {
+        await page.goto('/');
+        const blocks = await page
+            .locator('script[type="application/ld+json"]')
+            .allTextContents();
+        const graph = blocks.map((b) => JSON.parse(b));
+        const types = graph.flatMap((g) =>
+            (g['@graph'] ?? [g]).map((n: { '@type'?: string }) => n['@type']),
+        );
+        expect(types).toContain('Organization');
+        expect(types).toContain('WebSite');
+    });
+
     test('privacy policy states removal path and crisis line', async ({ page }) => {
         await page.goto('/legal/privacidad');
         await expect(

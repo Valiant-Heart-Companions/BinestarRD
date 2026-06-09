@@ -5,7 +5,8 @@
     "specialties": [],
     "location_text": "Santiago de los Caballeros, Santiago",
     "neighborhood": null,
-    "phone": "809-580-1171",
+    "phone": "8095801171",
+    "image": "https://www.nexodoc.com/_file/medicos/73d0af60ccee9d09c9eef5a6fa76d73f/carin-mustafa_perfil_20180528112445.png",
     "source": "https://guiamedica.com.do/medicos/dr-carin-mustafa-psiquiatra-santiago/"
   },
   {
@@ -14,7 +15,7 @@
     "specialties": [],
     "location_text": "Santiago de los Caballeros, Santiago",
     "neighborhood": null,
-    "phone": "809-226-8686",
+    "phone": "8092268686",
     "source": "https://guiamedica.com.do/medicos/dr-francisco-angeles-gomez-psiquiatra-santiago/"
   },
   {
@@ -23,7 +24,8 @@
     "specialties": [],
     "location_text": "Santiago de los Caballeros, Santiago",
     "neighborhood": null,
-    "phone": "829-947-2321",
+    "phone": "8299472321",
+    "image": "https://homs.com.do/storage/2026/06/Mirlan-De-los-Santos.webp",
     "source": "https://guiamedica.com.do/medicos/dr-mirlan-de-los-santos-psiquiatra-salud-mental-santiago/"
   },
   {
@@ -35,7 +37,8 @@
     ],
     "location_text": "Santo Domingo, Distrito Nacional",
     "neighborhood": null,
-    "phone": "809-692-6481",
+    "phone": "8096926481",
+    "image": "https://static.wixstatic.com/media/844618_45d5f02281554df6adf142a882faec6a~mv2.jpg/v1/crop/x_6,y_0,w_1500,h_1512/fill/w_736,h_742,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Neurohealt_%20Dra_%20Clara%20L%C3%B3pez_%20Psiquiatra%20en%20Santo%20Domingo%2C%20Ansiedad%2C%20depresi%C3%B3n_%20Consulta%20v.jpg",
     "source": "https://www.neurohealthrd.com/dra-clara-lopez-psiquiatra"
   },
   {
@@ -44,7 +47,7 @@
     "specialties": [],
     "location_text": "Santiago de los Caballeros, Santiago",
     "neighborhood": null,
-    "phone": "809-226-8686",
+    "phone": "8092268686",
     "source": "https://guiamedica.com.do/medicos/dra-frances-roulet-psicologa-clinica-santiago/"
   },
   {
@@ -57,18 +60,19 @@
     ],
     "location_text": "Gazcue, Santo Domingo, Distrito Nacional",
     "neighborhood": "Gazcue",
-    "phone": "809-686-0651",
+    "phone": "8096860651",
+    "image": "https://static.wixstatic.com/media/c7327f_8f9d38ac29174d93b6a0973a68df38c3~mv2.png/v1/fill/w_594,h_588,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Fotograf%C3%ADa%20Dra_%20Rose%20Nina.png",
     "source": "https://www.institutonina.com/"
   },
   {
     "full_name": "Lic. Gloria Concepción García",
     "role": "psychologist",
     "specialties": [
-      "Terapia Familiar"
+      "Terapia familiar"
     ],
     "location_text": "La Vega",
     "neighborhood": null,
-    "phone": "809-573-2533",
+    "phone": "8095732533",
     "source": "https://guiamedica.com.do/medicos/lic-gloria-concepcion-garcia-psicologo-terapia-fliar-la-vega/"
   },
   {
@@ -77,7 +81,7 @@
     "specialties": [],
     "location_text": "Santiago de los Caballeros, Santiago",
     "neighborhood": null,
-    "phone": "809-226-8686",
+    "phone": "8092268686",
     "source": "https://guiamedica.com.do/medicos/dr-manuel-viera-folch-psicologo-clinico-santiago/"
   },
   {
@@ -90,7 +94,414 @@
     ],
     "location_text": "Los Cacicazgos, Santo Domingo, Distrito Nacional",
     "neighborhood": "Los Cacicazgos",
-    "phone": "809-737-3213",
+    "phone": "8097373213",
     "source": "https://psiquiatria.com/directorio/susan-portes"
+  },
+  {
+    "full_name": "Dr. Alejandro Uribe Peguero",
+    "role": "psychiatrist",
+    "specialties": [],
+    "location_text": "Santo Domingo, Distrito Nacional",
+    "neighborhood": "La Esperilla",
+    "phone": "8092246206",
+    "source": "https://guiamedica.com.do/medicos/dr-alejandro-uribe-psiquiatra-santo-domingo/"
+  },
+  {
+    "full_name": "Dr. Joaquín Cruz Sánchez",
+    "role": "psychiatrist",
+    "specialties": [],
+    "location_text": "Santo Domingo, Distrito Nacional",
+    "neighborhood": null,
+    "phone": "8095434107",
+    "source": "https://guiamedica.com.do/medicos/dr-joaquin-cruz-sanchez-psiquiatra-psicologo-santo-domingo/"
+  },
+  {
+    "full_name": "Dra. Fátima del Rosario Vázquez Cuevas",
+    "role": "psychiatrist",
+    "specialties": [],
+    "location_text": "Santo Domingo, Distrito Nacional",
+    "neighborhood": null,
+    "phone": "8097290345",
+    "source": "https://guiamedica.com.do/medicos/dra-fatima-del-rosario-vazquez-cuevas-psiquiatra-santo-domingo/"
+  },
+  {
+    "full_name": "Dr. Jacobo Fernández",
+    "role": "psychiatrist",
+    "specialties": [
+      "Psiquiatría infantil",
+      "Sexología"
+    ],
+    "location_text": "Santo Domingo, Distrito Nacional",
+    "neighborhood": null,
+    "phone": "8095373238",
+    "source": "https://guiamedica.com.do/medicos/dr-jacobo-fernandez-psiquiatra-santo-domingo/"
+  },
+  {
+    "full_name": "Dr. Manuel Naranjo Díaz",
+    "role": "psychiatrist",
+    "specialties": [],
+    "location_text": "Santo Domingo, Distrito Nacional",
+    "neighborhood": null,
+    "phone": "8092214224",
+    "source": "https://guiamedica.com.do/medicos/dr-manuel-naranjo-diaz-psiquiatra-santo-domingo/"
+  },
+  {
+    "full_name": "Dr. César Mella Mejías",
+    "role": "psychiatrist",
+    "specialties": [],
+    "location_text": "Santo Domingo, Distrito Nacional",
+    "neighborhood": null,
+    "phone": "8095406740",
+    "source": "https://guiamedica.com.do/medicos/dr-cesar-mella-mejias-psiquiatra-santo-domingo/"
+  },
+  {
+    "full_name": "Dr. Secundino Palacios Carpio",
+    "role": "psychiatrist",
+    "specialties": [
+      "Psicoterapia"
+    ],
+    "location_text": "Santo Domingo, Distrito Nacional",
+    "neighborhood": null,
+    "source": "https://guiamedica.com.do/medicos/dr-secundino-palacios-carpio-psiquiatra-santo-domingo/"
+  },
+  {
+    "full_name": "Dra. Anny Maisone Castillo",
+    "role": "psychiatrist",
+    "specialties": [],
+    "location_text": "Santo Domingo, Distrito Nacional",
+    "neighborhood": null,
+    "phone": "8098290154",
+    "source": "https://guiamedica.com.do/medicos/dra-anny-maisone-castillo-psiaquiatra-santo-domingo/"
+  },
+  {
+    "full_name": "Dr. Ramón Gómez Aranda",
+    "role": "psychiatrist",
+    "specialties": [],
+    "location_text": "Santiago de los Caballeros, Santiago",
+    "neighborhood": null,
+    "source": "https://guiamedica.com.do/medicos/dr-ramon-gomez-aranda-psiquiatra-santiago/"
+  },
+  {
+    "full_name": "Dr. Nelson Tabar García",
+    "role": "psychiatrist",
+    "specialties": [],
+    "location_text": "Santiago de los Caballeros, Santiago",
+    "neighborhood": null,
+    "phone": "8092268686",
+    "source": "https://guiamedica.com.do/medicos/nelson-tabar-garcia-psiquiatra-santiago/"
+  },
+  {
+    "full_name": "Dr. Domingo Santiago",
+    "role": "psychiatrist",
+    "specialties": [],
+    "location_text": "Nagua, María Trinidad Sánchez",
+    "neighborhood": null,
+    "phone": "8095843939",
+    "source": "https://guiamedica.com.do/medicos/dr-domingo-santiago-psiquiatra-nagua/"
+  },
+  {
+    "full_name": "Dra. Mariela Camilo Pérez",
+    "role": "psychiatrist",
+    "specialties": [],
+    "location_text": "San Francisco de Macorís, Duarte",
+    "neighborhood": null,
+    "source": "https://guiamedica.com.do/medicos/dra-mariela-camilo-perez/"
+  },
+  {
+    "full_name": "Dr. Luis Emilio Montalvo Arzeno",
+    "role": "psychiatrist",
+    "specialties": [],
+    "location_text": "Santo Domingo, Distrito Nacional",
+    "neighborhood": null,
+    "source": "https://cedimat.com/index.php/medicina/unidad-de-salud-mental/"
+  },
+  {
+    "full_name": "Dra. Jeanette Taveras",
+    "role": "psychiatrist",
+    "specialties": [
+      "Ansiedad",
+      "Estrés"
+    ],
+    "location_text": "Santo Domingo, Distrito Nacional",
+    "neighborhood": "Ensanche La Fe",
+    "phone": "8095659989",
+    "source": "https://cedimat.com/index.php/medicina/unidad-de-salud-mental/"
+  },
+  {
+    "full_name": "Dr. Víctor Luis Figueroa Alvarado",
+    "role": "psychiatrist",
+    "specialties": [
+      "Adicciones",
+      "Ansiedad",
+      "Depresión",
+      "Trastorno bipolar",
+      "Esquizofrenia"
+    ],
+    "location_text": "Santo Domingo, Distrito Nacional",
+    "neighborhood": "Los Restauradores",
+    "phone": "8096926491",
+    "source": "https://www.neurohealthrd.com/psiquiatra-victor-luis-figueroa-alvarado-neurohealth"
+  },
+  {
+    "full_name": "Dra. Disnanyely Mateo Fajardo",
+    "role": "psychiatrist",
+    "specialties": [
+      "Trastornos del sueño",
+      "Adicciones"
+    ],
+    "location_text": "Santo Domingo, Distrito Nacional",
+    "neighborhood": null,
+    "source": "https://disnanyely.com.do/"
+  },
+  {
+    "full_name": "Dra. Camila Vásquez Pichardo",
+    "role": "psychiatrist",
+    "specialties": [],
+    "location_text": "Santo Domingo, Distrito Nacional",
+    "neighborhood": null,
+    "source": "https://doctor.do/doctor/camila-vasquez-pichardo/"
+  },
+  {
+    "full_name": "Dr. José Acra Mues",
+    "role": "psychiatrist",
+    "specialties": [
+      "Psicoterapia individual y familiar",
+      "Depresión",
+      "Trastornos de personalidad",
+      "Fobias",
+      "Psicosis"
+    ],
+    "location_text": "Santo Domingo, Distrito Nacional",
+    "neighborhood": "Piantini",
+    "phone": "8095494584",
+    "source": "https://drjoseacra.com/"
+  },
+  {
+    "full_name": "Dr. Edward José Martínez",
+    "role": "psychologist",
+    "specialties": [
+      "Hipnosis clínica",
+      "Sexología",
+      "Terapia cognitivo-conductual",
+      "Neuropsicología"
+    ],
+    "location_text": "Santo Domingo, Distrito Nacional",
+    "neighborhood": null,
+    "phone": "8097414640",
+    "source": "https://guiamedica.com.do/medicos/dr-edward-martinez-psicologo-clinico-santo-domingo/"
+  },
+  {
+    "full_name": "Lic. Alejandra De los Santos Velasco",
+    "role": "psychologist",
+    "specialties": [],
+    "location_text": "Santo Domingo, Distrito Nacional",
+    "neighborhood": null,
+    "phone": "8095657477",
+    "source": "https://guiamedica.com.do/medicos/lic-alejandra-de-los-santos-velasco-psicologo-santo-domingo/"
+  },
+  {
+    "full_name": "Dra. Artemisa Medina García",
+    "role": "psychologist",
+    "specialties": [],
+    "location_text": "Santo Domingo, Distrito Nacional",
+    "neighborhood": "María Auxiliadora",
+    "phone": "8095389993",
+    "source": "https://guiamedica.com.do/medicos/dra-artemisa-medina-garcia-psicologo-santo-domingo/"
+  },
+  {
+    "full_name": "Lic. Pedro José Vásquez",
+    "role": "psychologist",
+    "specialties": [
+      "Psicología de la obesidad",
+      "Trastornos alimentarios",
+      "Terapia de pareja",
+      "Adicciones"
+    ],
+    "location_text": "Santo Domingo, Distrito Nacional",
+    "neighborhood": null,
+    "phone": "8095413000",
+    "source": "https://hospiten.com/medicos/vasquez-pedro-jose"
+  },
+  {
+    "full_name": "Lic. Juan Antonio Morales Puerta",
+    "role": "psychologist",
+    "specialties": [
+      "Hipnoterapia",
+      "Terapia de pareja"
+    ],
+    "location_text": "Santo Domingo, Distrito Nacional",
+    "neighborhood": null,
+    "phone": "8097328666",
+    "source": "https://guiamedica.com.do/medicos/lic-juan-morales-puerta-psicologo-clinico-hipnoterapeuta-santo-domingo/"
+  },
+  {
+    "full_name": "Dr. Domingo De la Cruz",
+    "role": "psychologist",
+    "specialties": [],
+    "location_text": "Puerto Plata, Puerto Plata",
+    "neighborhood": null,
+    "phone": "8096876807",
+    "source": "https://guiamedica.com.do/medicos/dr-domingo-de-la-cruz-psicologo-clinico-puerto-plata/"
+  },
+  {
+    "full_name": "Dra. Dalul Ordehi González",
+    "role": "psychologist",
+    "specialties": [
+      "Neuropsicología",
+      "Neurociencia cognitiva aplicada"
+    ],
+    "location_text": "Santo Domingo, Distrito Nacional",
+    "neighborhood": null,
+    "phone": "8095321992",
+    "source": "https://neurotraining.do/nosotros/nuestro-equipo/"
+  },
+  {
+    "full_name": "Dr. Alejandro Antúnez",
+    "role": "psychologist",
+    "specialties": [
+      "Neuropsicología",
+      "Neurociencia cognitiva aplicada"
+    ],
+    "location_text": "Santo Domingo, Distrito Nacional",
+    "neighborhood": null,
+    "phone": "8095321992",
+    "source": "https://neurotraining.do/nosotros/nuestro-equipo/"
+  },
+  {
+    "full_name": "Lic. Aurora De La Oz",
+    "role": "psychologist",
+    "specialties": [
+      "Terapia cognitivo-conductual",
+      "Terapia de pareja",
+      "Depresión",
+      "Autoestima"
+    ],
+    "location_text": "Santo Domingo, Distrito Nacional",
+    "neighborhood": null,
+    "source": "https://www.psicologia-clinicaenrd.com/"
+  },
+  {
+    "full_name": "Milena Medina",
+    "role": "psychologist",
+    "specialties": [
+      "Neuropsicología",
+      "Trastornos del desarrollo",
+      "Terapia cognitivo-conductual"
+    ],
+    "location_text": "Santiago de los Caballeros, Santiago",
+    "neighborhood": null,
+    "phone": "8097344628",
+    "source": "https://psiquiatria.com/directorio/milena-medina/psicologo/santiago/republica-dominicana"
+  },
+  {
+    "full_name": "Lic. Rosa Guaba",
+    "role": "psychologist",
+    "specialties": [
+      "Terapia cognitivo-conductual",
+      "Trastornos de la alimentación",
+      "Evaluaciones psicológicas"
+    ],
+    "location_text": "Santiago de los Caballeros, Santiago",
+    "neighborhood": null,
+    "phone": "8295814445",
+    "whatsapp": "8299041270",
+    "source": "https://psiquiatria.com/directorio/rosa-guaba/psicologo/santiago-de-los-caballeros/republica-dominicana"
+  },
+  {
+    "full_name": "Jhairo Núñez García",
+    "role": "psychologist",
+    "specialties": [
+      "Psicología clínica infantil y adolescente",
+      "Adicciones"
+    ],
+    "location_text": "Santiago de los Caballeros, Santiago",
+    "neighborhood": null,
+    "phone": "8093872795",
+    "source": "https://psiquiatria.com/directorio/jhairong/psicologo/santiago-de-los-caballeros/republica-dominicana"
+  },
+  {
+    "full_name": "Lesli Peña",
+    "role": "psychologist",
+    "specialties": [
+      "Ansiedad",
+      "Depresión",
+      "Estrés"
+    ],
+    "location_text": "Santiago de los Caballeros, Santiago",
+    "neighborhood": null,
+    "source": "https://psicologiaymente.com/directorio/do/rankings/mejores-psicologos-santiago-de-los-caballeros"
+  },
+  {
+    "full_name": "Carmen Luisa Lora Ramírez",
+    "role": "psychologist",
+    "specialties": [
+      "Terapia cognitivo-conductual",
+      "Ansiedad",
+      "Depresión",
+      "PTSD",
+      "Neuropsicología clínica"
+    ],
+    "location_text": "Santiago de los Caballeros, Santiago",
+    "neighborhood": null,
+    "source": "https://psicologiaymente.com/psicologos/2080756/carmen-luisa-lora-ramirez"
+  },
+  {
+    "full_name": "Arileydi Pérez Peguero",
+    "role": "psychologist",
+    "specialties": [
+      "Psicología clínica",
+      "Niños y adolescentes"
+    ],
+    "location_text": "Santo Domingo, Distrito Nacional",
+    "neighborhood": null,
+    "source": "https://psicologiaymente.com/psicologos/2065828/arileydi-perez-peguero"
+  },
+  {
+    "full_name": "Reimi Ester Martínez Payano",
+    "role": "psychologist",
+    "specialties": [
+      "Terapia cognitivo-conductual",
+      "Terapia de pareja",
+      "Ansiedad",
+      "Depresión"
+    ],
+    "location_text": "Santo Domingo, Distrito Nacional",
+    "neighborhood": null,
+    "source": "https://psicologiaymente.com/directorio/do/rankings/mejores-psicologos-santo-domingo-republica-dominicana"
+  },
+  {
+    "full_name": "Junibel Gómez Espinal",
+    "role": "psychologist",
+    "specialties": [
+      "Terapia cognitivo-conductual",
+      "Ansiedad",
+      "Depresión",
+      "Dolor crónico"
+    ],
+    "location_text": "Santo Domingo, Distrito Nacional",
+    "neighborhood": null,
+    "source": "https://psicologiaymente.com/directorio/do/rankings/mejores-psicologos-santo-domingo-republica-dominicana"
+  },
+  {
+    "full_name": "Gloribel Cabrera",
+    "role": "psychologist",
+    "specialties": [
+      "Ansiedad",
+      "Depresión"
+    ],
+    "location_text": "San Pedro de Macorís, San Pedro de Macorís",
+    "neighborhood": null,
+    "source": "https://psicologiaymente.com/directorio/do/rankings/mejores-psicologos-san-pedro-de-macoris"
+  },
+  {
+    "full_name": "Ileny Milosys Quezada Mendoza",
+    "role": "psychologist",
+    "specialties": [
+      "Psicopedagogía",
+      "Trastornos del aprendizaje"
+    ],
+    "location_text": "La Romana, La Romana",
+    "neighborhood": null,
+    "source": "https://psicologiaymente.com/directorio/do/rankings/mejores-psicologos-la-romana"
   }
 ]

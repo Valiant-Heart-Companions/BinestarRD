@@ -29,6 +29,16 @@ type ProviderRow = {
   provider_insurances: { insurances: { name: string } | null }[] | null;
 };
 
+// Supabase's inferred type for the nested relation select (provider_specialties
+// ( specialties ( name ) ), …) doesn't line up with our flattened ProviderRow,
+// so the assertion lives here once instead of being scattered across queries.
+function asProviderRows(data: unknown): ProviderRow[] {
+  return (data ?? []) as ProviderRow[];
+}
+function asProviderRow(data: unknown): ProviderRow {
+  return data as ProviderRow;
+}
+
 type RatingInfo = { rating: number | null; reviewCount: number };
 
 function mapRow(row: ProviderRow, ratings?: RatingInfo): UiProvider {
@@ -94,7 +104,7 @@ export async function getProviders(): Promise<UiProvider[]> {
     .order('is_founding_member', { ascending: false })
     .order('full_name');
   if (error) throw error;
-  const rows = (data ?? []) as unknown as ProviderRow[];
+  const rows = asProviderRows(data);
   const ratings = await ratingsMap(
     supabase,
     rows.map((r) => r.id),
@@ -123,7 +133,7 @@ export async function getMyProvider(): Promise<UiProvider | null> {
     .maybeSingle();
   if (error) throw error;
   if (!data) return null;
-  const row = data as unknown as ProviderRow;
+  const row = asProviderRow(data);
   const ratings = await ratingsMap(supabase, [row.id]);
   return mapRow(row, ratings.get(row.id));
 }
@@ -169,7 +179,7 @@ export async function getProviderBySlug(
     .maybeSingle();
   if (error) throw error;
   if (!data) return null;
-  const row = data as unknown as ProviderRow;
+  const row = asProviderRow(data);
   const ratings = await ratingsMap(supabase, [row.id]);
   return mapRow(row, ratings.get(row.id));
 }

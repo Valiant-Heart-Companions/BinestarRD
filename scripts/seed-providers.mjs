@@ -21,6 +21,8 @@
  *     "phone": "8096860651",          // optional: public clinic/landline number
  *     "whatsapp": "8095550101",      // optional, digits only
  *     "license_number": "12345",      // optional
+ *     "image": "https://.../photo.jpg", // optional: downloaded into the
+ *                                       // provider-avatars bucket at seed time
  *     "source": "https://..."         // required: public page it came from
  *   }
  */
@@ -67,6 +69,47 @@ async function specialtyIdMap(names) {
   return new Map(data.map((s) => [s.name, s.id]));
 }
 
+// Best-effort: download a public image URL and store it in the provider-avatars
+// bucket under seed/<slug>. Runs with the service role key so it bypasses RLS.
+// Returns the public URL (cache-busted) or null on any failure.
+async function ingestImage(slug, url) {
+  try {
+    // Browser-like headers: some CDNs (e.g. Wix) use referer-based hotlink
+    // protection and reject bare requests for otherwise-public image assets.
+    const res = await fetch(url, {
+      headers: {
+        'User-Agent':
+          'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36',
+        Accept: 'image/avif,image/webp,image/png,image/*,*/*;q=0.8',
+        Referer: new URL(url).origin + '/',
+      },
+    });
+    if (!res.ok) {
+      console.warn(`  image fetch failed for ${slug}: HTTP ${res.status}`);
+      return null;
+    }
+    const contentType = res.headers.get('content-type') || 'image/jpeg';
+    if (!/^image\//.test(contentType)) {
+      console.warn(`  image url for ${slug} is not an image (${contentType})`);
+      return null;
+    }
+    const buf = Buffer.from(await res.arrayBuffer());
+    const path = `seed/${slug}`;
+    const { error } = await supabase.storage
+      .from('provider-avatars')
+      .upload(path, buf, { upsert: true, contentType });
+    if (error) {
+      console.warn(`  image upload failed for ${slug}: ${error.message}`);
+      return null;
+    }
+    const { data } = supabase.storage.from('provider-avatars').getPublicUrl(path);
+    return `${data.publicUrl}?v=${Date.now()}`;
+  } catch (e) {
+    console.warn(`  image error for ${slug}: ${e.message}`);
+    return null;
+  }
+}
+
 async function main() {
   const raw = await readFile(join(__dirname, 'seed-data', 'providers.json'), 'utf8');
   const records = JSON.parse(raw);
@@ -85,6 +128,9 @@ async function main() {
       continue;
     }
     const slug = slugify(r.full_name);
+    // Only set image_url when we successfully ingest one, so re-seeding without
+    // an image never wipes a photo the provider already uploaded.
+    const imageUrl = r.image ? await ingestImage(slug, r.image) : null;
     const { data: provider, error } = await supabase
       .from('providers')
       .upsert(
@@ -100,6 +146,7 @@ async function main() {
           source: r.source,
           claim_status: 'unclaimed',
           listing_status: 'active',
+          ...(imageUrl ? { image_url: imageUrl } : {}),
         },
         { onConflict: 'slug' },
       )

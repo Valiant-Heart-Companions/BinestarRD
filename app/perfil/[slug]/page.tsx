@@ -5,6 +5,7 @@ import { getProviderBySlug, roleLabel } from '@/lib/providers';
 import { getPublishedReviews, getMyReviewState } from '@/lib/reviews';
 import { SITE_URL } from '@/lib/site';
 import ReviewsSection from './reviews-section';
+import ProviderAvatar from '@/components/provider-avatar';
 import styles from '../profile.module.css';
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
@@ -144,13 +145,13 @@ export default async function ProfilePage({ params }: { params: Promise<{ slug: 
 
             <div className={styles.header}>
                 <div className={styles.imageContainer}>
-                    {provider.image ? (
-                        <img src={provider.image} alt={provider.name} className={styles.image} />
-                    ) : (
-                        <div className="w-full h-full flex items-center justify-center text-4xl font-bold text-gray-300">
-                            {provider.name.charAt(0)}
-                        </div>
-                    )}
+                    <ProviderAvatar
+                        src={provider.image}
+                        name={provider.name}
+                        fill
+                        sizes="200px"
+                        className={styles.image}
+                    />
                 </div>
 
                 <div className={styles.headerInfo}>
