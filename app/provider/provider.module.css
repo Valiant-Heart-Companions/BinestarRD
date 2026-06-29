@@ -238,6 +238,43 @@
     resize: vertical;
 }
 
+.optionGroup {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    max-height: 220px;
+    overflow-y: auto;
+    padding: 0.75rem;
+    border: 1px solid #CBD5E1;
+    border-radius: 0.5rem;
+    background: #F8FAFC;
+}
+
+.optionChip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.8125rem;
+    color: #334155;
+    background: white;
+    border: 1px solid #E2E8F0;
+    border-radius: 999px;
+    padding: 0.35rem 0.75rem;
+    cursor: pointer;
+    user-select: none;
+}
+
+.optionChip:has(input:checked) {
+    border-color: var(--color-primary);
+    background: #ECFDF5;
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+.optionChip input {
+    accent-color: var(--color-primary);
+}
+
 .btnSave {
     background-color: var(--color-primary);
     color: white;

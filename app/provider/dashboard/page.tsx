@@ -3,6 +3,7 @@ import { redirect } from 'next/navigation';
 import { getUser } from '@/lib/auth';
 import { getMyProvider, getProviderStats } from '@/lib/providers';
 import { getInboxForProvider } from '@/lib/questions';
+import { getSpecialtyOptions, getInsuranceOptions } from '@/lib/taxonomy';
 import DashboardClient from './dashboard-client';
 
 export const metadata = {
@@ -45,10 +46,20 @@ export default async function ProviderDashboardPage() {
     );
   }
 
-  const [inbox, stats] = await Promise.all([
+  const [inbox, stats, specialtyOptions, insuranceOptions] = await Promise.all([
     getInboxForProvider(provider.id),
     getProviderStats(provider.id),
+    getSpecialtyOptions(),
+    getInsuranceOptions(),
   ]);
 
-  return <DashboardClient provider={provider} inbox={inbox} stats={stats} />;
+  return (
+    <DashboardClient
+      provider={provider}
+      inbox={inbox}
+      stats={stats}
+      specialtyOptions={specialtyOptions}
+      insuranceOptions={insuranceOptions}
+    />
+  );
 }
