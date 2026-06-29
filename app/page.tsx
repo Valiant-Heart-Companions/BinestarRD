@@ -11,7 +11,7 @@ import styles from './home.module.css';
 export const metadata: Metadata = {
     title: 'Encuentra tu psicólogo o psiquiatra en República Dominicana',
     description:
-        'Directorio verificado de psicólogos y psiquiatras en la República Dominicana. Precios transparentes, perfiles reales, agenda directo por WhatsApp. Sin intermediarios.',
+        'Directorio verificado de psicólogos y psiquiatras en la República Dominicana. Precios transparentes, perfiles reales, contacto directo con el especialista. Sin intermediarios.',
 };
 
 const jsonLd = {
@@ -67,7 +67,7 @@ export default async function Home() {
                     </h1>
                     <p className={styles.subtitle}>
                         Psicólogos y psiquiatras de la República Dominicana, con precios
-                        claros. Agenda directo por WhatsApp, sin costos ocultos ni
+                        claros. Contacta directo al especialista, sin costos ocultos ni
                         intermediarios.
                     </p>
 
@@ -113,8 +113,8 @@ export default async function Home() {
                             <div className={styles.stepNum}>Paso 3</div>
                             <h3 className={styles.stepTitle}>Agenda</h3>
                             <p className={styles.stepDesc}>
-                                Escribe directo al WhatsApp del especialista y coordina tu
-                                primera consulta. Sin intermediarios.
+                                Llama o escribe por WhatsApp directo al especialista y
+                                coordina tu primera consulta. Sin intermediarios.
                             </p>
                         </div>
                     </div>

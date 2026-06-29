@@ -2,7 +2,7 @@ import { createClient } from '@/lib/supabase/server';
 import type { ProviderRole, ClaimStatus, UiProvider } from '@/lib/provider-types';
 
 export type { ProviderRole, ClaimStatus, UiProvider } from '@/lib/provider-types';
-export { roleLabel } from '@/lib/provider-types';
+export { roleLabel, providerContactLinks, formatPhone } from '@/lib/provider-types';
 
 const SELECT =
   'id, slug, full_name, role, bio, location_text, neighborhood, lat, lng, price, whatsapp, phone, image_url, is_founding_member, claim_status, source, owner_id, provider_specialties ( specialties ( name ) ), provider_insurances ( insurances ( name ) )';

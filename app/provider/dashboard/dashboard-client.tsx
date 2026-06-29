@@ -137,7 +137,7 @@ function useChecklist(provider: UiProvider): ChecklistItem[] {
             { label: 'Biografía profesional', done: provider.bio.trim().length > 0 },
             { label: 'Precio de consulta', done: provider.price != null },
             { label: 'Foto de perfil', done: provider.image.trim().length > 0 },
-            { label: 'WhatsApp de contacto', done: Boolean(provider.whatsapp) },
+            { label: 'Datos de contacto', done: Boolean(provider.whatsapp || provider.phone) },
             { label: 'Especialidades', done: provider.specialties.length > 0 },
             { label: 'Seguros aceptados', done: provider.insurance.length > 0 },
         ],
@@ -341,7 +341,17 @@ export default function DashboardClient({
                                     />
                                 </div>
                                 <div className={styles.formGroup}>
-                                    <label className={styles.label}>WhatsApp directo</label>
+                                    <label className={styles.label}>Teléfono de contacto</label>
+                                    <input
+                                        type="text"
+                                        className={styles.input}
+                                        value={provider.phone ?? ''}
+                                        disabled
+                                        title="Contacta soporte para cambiar esto"
+                                    />
+                                </div>
+                                <div className={styles.formGroup}>
+                                    <label className={styles.label}>WhatsApp (si aplica)</label>
                                     <input
                                         type="text"
                                         className={styles.input}
