@@ -15,7 +15,7 @@ export default async function Header() {
             <div className={`container ${styles.inner}`}>
                 <nav className={styles.nav}>
                     <Link href="/busqueda" className={styles.navLink}>Directorio</Link>
-                    <Link href="/preguntas" className={styles.navLink}>Q&A</Link>
+                    <Link href="/preguntas" className={styles.navLink}>Preguntas</Link>
                 </nav>
 
                 <Link href="/" className={styles.brandLink}>

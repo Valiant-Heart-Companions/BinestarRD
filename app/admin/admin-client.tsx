@@ -77,7 +77,7 @@ export default function AdminClient({
                         onClick={() => setActiveTab('dashboard')}
                         className={`${styles.menuItem} ${activeTab === 'dashboard' ? styles.menuItemActive : ''}`}
                     >
-                        <LayoutDashboard className="w-4 h-4 mr-3" /> Dashboard
+                        <LayoutDashboard className="w-4 h-4 mr-3" /> Panel
                     </button>
                     <button
                         onClick={() => setActiveTab('validation')}

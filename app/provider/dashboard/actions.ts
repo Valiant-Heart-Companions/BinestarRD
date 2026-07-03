@@ -34,12 +34,12 @@ export async function updateMyProfile(
   }
   const { bio, price } = parsed.data;
 
-  const { data: provider } = await supabase
+  const { data: provider, error: providerError } = await supabase
     .from('providers')
     .select('id, slug')
     .eq('owner_id', user.id)
     .maybeSingle();
-  if (!provider) {
+  if (providerError || !provider) {
     return { error: 'No encontramos un perfil asociado a tu cuenta.' };
   }
 
@@ -89,12 +89,12 @@ export async function updateMyPhoto(
     return { error: 'La imagen es muy grande (máximo 5 MB).' };
   }
 
-  const { data: provider } = await supabase
+  const { data: provider, error: providerError } = await supabase
     .from('providers')
     .select('id, slug')
     .eq('owner_id', user.id)
     .maybeSingle();
-  if (!provider) {
+  if (providerError || !provider) {
     return { error: 'No encontramos un perfil asociado a tu cuenta.' };
   }
 
@@ -154,12 +154,12 @@ export async function answerQuestion(
   }
   const { questionId, body } = parsed.data;
 
-  const { data: provider } = await supabase
+  const { data: provider, error: providerError } = await supabase
     .from('providers')
     .select('id')
     .eq('owner_id', user.id)
     .maybeSingle();
-  if (!provider) {
+  if (providerError || !provider) {
     return { error: 'Solo los especialistas con perfil pueden responder.' };
   }
 
