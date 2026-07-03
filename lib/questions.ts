@@ -10,6 +10,7 @@ export interface UiAnswer {
   providerRole: ProviderRole;
   providerSlug: string;
   providerVerified: boolean;
+  providerImageUrl: string | null;
 }
 
 export interface UiQuestion {
@@ -117,6 +118,7 @@ type AnswerRow = {
     role: ProviderRole;
     slug: string;
     claim_status: string;
+    image_url: string | null;
   } | null;
   answer_votes: { count: number }[] | null;
 };
@@ -128,7 +130,7 @@ export async function getQuestionBySlug(
   const { data, error } = await supabase
     .from('questions')
     .select(
-      'id, slug, title, body, category, created_at, question_votes(count), answers ( id, body, status, provider:providers ( full_name, role, slug, claim_status ), answer_votes(count) )',
+      'id, slug, title, body, category, created_at, question_votes(count), answers ( id, body, status, provider:providers ( full_name, role, slug, claim_status, image_url ), answer_votes(count) )',
     )
     .eq('slug', slug)
     .eq('status', 'published')
@@ -147,6 +149,7 @@ export async function getQuestionBySlug(
       providerRole: a.provider!.role,
       providerSlug: a.provider!.slug,
       providerVerified: a.provider!.claim_status === 'claimed',
+      providerImageUrl: a.provider!.image_url,
     }));
 
   return {

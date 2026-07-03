@@ -50,13 +50,16 @@ export async function submitClaim(
   }
 
   // Avoid duplicate pending claims by the same user.
-  const { data: existing } = await supabase
+  const { data: existing, error: existingError } = await supabase
     .from('claims')
     .select('id')
     .eq('provider_id', providerId)
     .eq('claimant_id', user.id)
     .eq('status', 'pending')
     .maybeSingle();
+  if (existingError) {
+    return { error: 'No pudimos verificar tu solicitud. Intenta de nuevo.' };
+  }
   if (existing) {
     return { submitted: true };
   }

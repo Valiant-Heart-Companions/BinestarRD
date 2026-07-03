@@ -4,6 +4,8 @@ import { ThumbsUp, CheckCircle, MessageSquare } from 'lucide-react';
 import { getQuestionBySlug, getVotedQuestionIds, getVotedAnswerIds } from '@/lib/questions';
 import { upvoteQuestionAction, upvoteAnswerAction } from '../vote-actions';
 import { roleLabel } from '@/lib/providers';
+import ProviderAvatar from '@/components/provider-avatar';
+import { SITE_URL } from '@/lib/site';
 import styles from '../qa.module.css';
 
 function formatDate(iso: string): string {
@@ -44,7 +46,37 @@ export default async function QuestionDetailPage({ params }: { params: Promise<{
     ]);
     const questionVoted = votedQuestions.has(question.id);
 
+    const publishedAnswers = question.answers.filter(a => a);
+    const jsonLd = {
+        '@context': 'https://schema.org',
+        '@type': 'QAPage',
+        mainEntity: {
+            '@type': 'Question',
+            name: question.title,
+            text: question.body,
+            datePublished: question.createdAt,
+            url: `${SITE_URL}/preguntas/${question.slug}`,
+            answerCount: publishedAnswers.length,
+            ...(publishedAnswers.length > 0 && {
+                acceptedAnswer: {
+                    '@type': 'Answer',
+                    text: publishedAnswers[0].body,
+                    author: {
+                        '@type': 'Physician',
+                        name: publishedAnswers[0].providerName,
+                        url: `${SITE_URL}/perfil/${publishedAnswers[0].providerSlug}`,
+                    },
+                },
+            }),
+        },
+    };
+
     return (
+        <>
+        <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <div className={styles.qaContainer}>
             <div className="mb-6">
                 <Link href="/preguntas" className="text-sm text-gray-500 hover:underline">← Volver a Preguntas</Link>
@@ -102,9 +134,12 @@ export default async function QuestionDetailPage({ params }: { params: Promise<{
                     {question.answers.map(answer => (
                         <div key={answer.id} className={styles.answerCard}>
                             <div className={styles.providerInfo}>
-                                <div className="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-xs font-bold text-gray-500">
-                                    {answer.providerName.charAt(0)}
-                                </div>
+                                <ProviderAvatar
+                                    name={answer.providerName}
+                                    src={answer.providerImageUrl}
+                                    width={40}
+                                    height={40}
+                                />
                                 <div>
                                     <div className={styles.providerName}>
                                         <Link href={`/perfil/${answer.providerSlug}`} className="hover:underline">
@@ -142,5 +177,6 @@ export default async function QuestionDetailPage({ params }: { params: Promise<{
                 </section>
             </article>
         </div>
+        </>
     );
 }
