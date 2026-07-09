@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { MapPin, Shield, Star, MessageCircle, Phone, Info } from 'lucide-react';
-import { getProviderBySlug, roleLabel } from '@/lib/providers';
+import { getProviderBySlug, roleLabel, providerContactLinks } from '@/lib/providers';
 import { getPublishedReviews, getMyReviewState } from '@/lib/reviews';
 import { SITE_URL } from '@/lib/site';
 import ReviewsSection from './reviews-section';
@@ -45,10 +45,10 @@ export default async function ProfilePage({ params }: { params: Promise<{ slug: 
 
     const digits = (n: string) => n.replace(/\D/g, '');
     const whatsappMessage = `Hola ${provider.name}, le vi en Bienestar RD y me gustaría agendar una consulta.`;
-    const whatsappUrl = provider.whatsapp
-        ? `https://wa.me/1${digits(provider.whatsapp)}?text=${encodeURIComponent(whatsappMessage)}`
-        : null;
-    const phoneUrl = provider.phone ? `tel:+1${digits(provider.phone)}` : null;
+    const { phoneUrl, phoneDisplay, whatsappUrl } = providerContactLinks(provider, whatsappMessage);
+    // WhatsApp is offered as a secondary path; when it's the only known channel
+    // it takes the primary (filled) treatment instead.
+    const whatsappPrimary = !phoneUrl;
 
     const jsonLd: Record<string, unknown> = {
         '@context': 'https://schema.org',
@@ -254,27 +254,33 @@ export default async function ProfilePage({ params }: { params: Promise<{ slug: 
                             </div>
                         </div>
 
-                        <div className="mt-6">
-                            {whatsappUrl ? (
-                                <>
-                                    <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className={styles.whatsappBtn}>
-                                        <MessageCircle className="w-5 h-5 mr-2" />
-                                        Agendar por WhatsApp
-                                    </a>
-                                    <p className="text-xs text-center text-gray-500 mt-3 px-4">
-                                        Al hacer clic serás redirigido al chat personal del especialista.
-                                    </p>
-                                </>
-                            ) : phoneUrl ? (
-                                <>
-                                    <a href={phoneUrl} className={styles.whatsappBtn} style={{ backgroundColor: 'var(--color-primary)' }}>
-                                        <Phone className="w-5 h-5 mr-2" />
-                                        Llamar al consultorio
-                                    </a>
-                                    <p className="text-xs text-center text-gray-500 mt-3 px-4">
-                                        Teléfono público obtenido de fuentes abiertas.
-                                    </p>
-                                </>
+                        <div className="mt-6 space-y-3">
+                            {phoneUrl && (
+                                <a href={phoneUrl} className={styles.callBtn}>
+                                    <Phone className="w-5 h-5 mr-2" />
+                                    Llamar al consultorio
+                                </a>
+                            )}
+                            {whatsappUrl && (
+                                <a
+                                    href={whatsappUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className={whatsappPrimary ? styles.whatsappBtn : styles.whatsappBtnSecondary}
+                                >
+                                    <MessageCircle className="w-5 h-5 mr-2" />
+                                    Escribir por WhatsApp
+                                </a>
+                            )}
+                            {phoneDisplay && (
+                                <p className="text-sm text-center text-gray-600">{phoneDisplay}</p>
+                            )}
+                            {phoneUrl || whatsappUrl ? (
+                                <p className="text-xs text-center text-gray-500 px-4">
+                                    {provider.claimStatus === 'claimed'
+                                        ? 'Coordina tu consulta directamente con el especialista, sin intermediarios.'
+                                        : 'Datos de contacto obtenidos de fuentes públicas. Conviene confirmarlos al agendar.'}
+                                </p>
                             ) : (
                                 <p className="text-sm text-center text-gray-500 px-4">
                                     Datos de contacto no disponibles todavía.

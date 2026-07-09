@@ -41,7 +41,7 @@ Decided product posture (do not silently reverse these):
 | `/preguntas` | Q&A index | mock data |
 | `/preguntas/[slug]` | Q&A detail + answers | mock data |
 | `/preguntas/nueva` | Ask a question | mock data |
-| `/provider/dashboard` | Provider portal | mock, all actions are `alert()` |
+| `/provider/dashboard` | Provider portal | wired to Supabase: Server Actions edit profile (bio, price, phone, whatsapp, location, specialties, insurance), upload photo, answer questions |
 | `/admin` | Validation + moderation queues | mock, buttons inert |
 | `/legal/privacidad` | Privacy policy | static |
 
