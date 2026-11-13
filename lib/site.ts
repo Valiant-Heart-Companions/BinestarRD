@@ -7,4 +7,4 @@ export const SITE_URL = (
 export const SITE_NAME = 'Bienestar RD';
 
 export const SITE_DESCRIPTION =
-  'Directorio de psicólogos y psiquiatras verificados en República Dominicana. Precios transparentes, sin intermediarios: agenda directamente por WhatsApp.';
+  'Directorio de psicólogos y psiquiatras verificados en República Dominicana. Precios transparentes, sin intermediarios: contacta directamente con el especialista.';

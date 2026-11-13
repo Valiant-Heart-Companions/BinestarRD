@@ -89,8 +89,8 @@ export default function PrivacyPage() {
                         Usamos los datos para operar el directorio: mostrar perfiles,
                         verificar reclamos de especialistas, moderar contenido, publicar
                         preguntas y reseñas, y mejorar el servicio. La conversión ocurre
-                        enviándote directamente al WhatsApp del especialista para agendar; no
-                        intermediamos esa conversación.
+                        poniéndote en contacto directo con el especialista —por teléfono o
+                        WhatsApp— para agendar; no intermediamos esa conversación.
                     </p>
                 </section>
 

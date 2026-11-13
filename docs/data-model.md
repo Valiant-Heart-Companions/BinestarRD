@@ -37,8 +37,8 @@ Most public reads are anonymous (no login needed to browse the directory).
 | lat | double precision | map |
 | lng | double precision | map |
 | price | integer null | RD$, null when "Consultar" |
-| phone | text null | public clinic/landline (seeded from public sources) |
-| whatsapp | text | digits only (provider-controlled, set on claim) |
+| phone | text null | primary contact: clinic/landline or mobile (seeded from public sources) |
+| whatsapp | text null | digits only; set ONLY when the number is known to be on WhatsApp. Null otherwise — the UI uses this as the signal to offer a direct WhatsApp link rather than assuming any phone reaches WhatsApp. |
 | image_url | text | |
 | is_founding_member | boolean | default false |
 | license_number | text null | exequátur / CODOPSI / MD license |

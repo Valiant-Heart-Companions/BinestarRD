@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import type { UiProvider } from '@/lib/provider-types';
 import type { ProviderStats } from '@/lib/providers';
+import type { TaxonomyOption } from '@/lib/taxonomy';
 import {
     updateMyProfile,
     answerQuestion,
@@ -137,7 +138,7 @@ function useChecklist(provider: UiProvider): ChecklistItem[] {
             { label: 'Biografía profesional', done: provider.bio.trim().length > 0 },
             { label: 'Precio de consulta', done: provider.price != null },
             { label: 'Foto de perfil', done: provider.image.trim().length > 0 },
-            { label: 'WhatsApp de contacto', done: Boolean(provider.whatsapp) },
+            { label: 'Datos de contacto', done: Boolean(provider.whatsapp || provider.phone) },
             { label: 'Especialidades', done: provider.specialties.length > 0 },
             { label: 'Seguros aceptados', done: provider.insurance.length > 0 },
         ],
@@ -145,14 +146,48 @@ function useChecklist(provider: UiProvider): ChecklistItem[] {
     );
 }
 
+function OptionGroup({
+    name,
+    options,
+    selectedNames,
+}: {
+    name: string;
+    options: TaxonomyOption[];
+    selectedNames: string[];
+}) {
+    const selected = useMemo(
+        () => new Set(selectedNames.map((n) => n.trim().toLowerCase())),
+        [selectedNames],
+    );
+    return (
+        <div className={styles.optionGroup}>
+            {options.map((opt) => (
+                <label key={opt.id} className={styles.optionChip}>
+                    <input
+                        type="checkbox"
+                        name={name}
+                        value={opt.id}
+                        defaultChecked={selected.has(opt.name.trim().toLowerCase())}
+                    />
+                    {opt.name}
+                </label>
+            ))}
+        </div>
+    );
+}
+
 export default function DashboardClient({
     provider,
     inbox,
     stats,
+    specialtyOptions,
+    insuranceOptions,
 }: {
     provider: UiProvider;
     inbox: InboxQuestion[];
     stats: ProviderStats;
+    specialtyOptions: TaxonomyOption[];
+    insuranceOptions: TaxonomyOption[];
 }) {
     const [tab, setTab] = useState<'overview' | 'profile' | 'inbox'>('overview');
     const [bio, setBio] = useState(provider.bio);
@@ -341,15 +376,70 @@ export default function DashboardClient({
                                     />
                                 </div>
                                 <div className={styles.formGroup}>
-                                    <label className={styles.label}>WhatsApp directo</label>
+                                    <label className={styles.label} htmlFor="phone">Teléfono de contacto</label>
                                     <input
-                                        type="text"
+                                        id="phone"
+                                        name="phone"
+                                        type="tel"
                                         className={styles.input}
-                                        value={provider.whatsapp ?? ''}
-                                        disabled
-                                        title="Contacta soporte para cambiar esto"
+                                        defaultValue={provider.phone ?? ''}
+                                        placeholder="Ej: 809 555 0101"
                                     />
                                 </div>
+                                <div className={styles.formGroup}>
+                                    <label className={styles.label} htmlFor="whatsapp">WhatsApp (si aplica)</label>
+                                    <input
+                                        id="whatsapp"
+                                        name="whatsapp"
+                                        type="tel"
+                                        className={styles.input}
+                                        defaultValue={provider.whatsapp ?? ''}
+                                        placeholder="Ej: 809 555 0101"
+                                    />
+                                    <p className="text-xs text-gray-500 mt-1">
+                                        Indícalo solo si ese número recibe mensajes de WhatsApp; mostraremos el botón de WhatsApp en tu perfil.
+                                    </p>
+                                </div>
+                                <div className={styles.formGroup}>
+                                    <label className={styles.label} htmlFor="location">Ubicación</label>
+                                    <input
+                                        id="location"
+                                        name="location"
+                                        type="text"
+                                        className={styles.input}
+                                        defaultValue={provider.location ?? ''}
+                                        placeholder="Ej: Naco, Santo Domingo"
+                                    />
+                                </div>
+                                <div className={styles.formGroup}>
+                                    <label className={styles.label} htmlFor="neighborhood">Sector / Barrio</label>
+                                    <input
+                                        id="neighborhood"
+                                        name="neighborhood"
+                                        type="text"
+                                        className={styles.input}
+                                        defaultValue={provider.neighborhood ?? ''}
+                                        placeholder="Ej: Naco"
+                                    />
+                                </div>
+                            </div>
+
+                            <div className={styles.formGroup}>
+                                <label className={styles.label}>Especialidades</label>
+                                <OptionGroup
+                                    name="specialties"
+                                    options={specialtyOptions}
+                                    selectedNames={provider.specialties}
+                                />
+                            </div>
+
+                            <div className={styles.formGroup}>
+                                <label className={styles.label}>Seguros aceptados</label>
+                                <OptionGroup
+                                    name="insurances"
+                                    options={insuranceOptions}
+                                    selectedNames={provider.insurance}
+                                />
                             </div>
                             {state.error ? (
                                 <p className="text-sm text-red-600 mt-2">{state.error}</p>
